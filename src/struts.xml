@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+	<package name="teacher" extends="struts-default" namespace="/teacher">
+		<interceptors>
+			<interceptor name="teacherLogin" class="org.jevy.action.TeacherLoginIntercepceptor"></interceptor>
+			<interceptor-stack name="teacherLoginInterceptor">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="teacherLogin"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="teacherLoginInterceptor"></default-interceptor-ref>
+		<global-results>
+			<result name="login">/teacher/login.jsp</result>
+			<result name="error">/teacher/errors.jsp</result>
+		</global-results>
+		
+		<action name="organize">
+			<result name="success">uploadStudent.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="uploadStudents" class="org.jevy.action.UploadStudentAction">
+		  	<param name="savePath">/upload</param>
+			<result name="success" type="redirect">layExname_layTeam.action</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="databaseResume" class="org.jevy.action.DatabaseResume">
+		  	<param name="savePath">/upload</param>
+			<result name="success">/teacher/databaseExe2.jsp</result>
+			<result name="input">/teacher/database.jsp</result>
+		</action>
+		<action name="deleteData" class="org.jevy.action.DeleteDataAction">
+			<result name="success" type="redirect">layDataDispacher.action?tid=${tid}</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="description" class="org.jevy.action.DescriptionAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">layDescription</param>
+				<param name="namespace">/teacher</param>
+				<param name="enid">${enid}</param>
+			</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="descriptionExname" class="org.jevy.action.LayExNameAction">
+			<result name="success">/teacher/description.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="descriptionEditer" class="org.jevy.action.DescriptionEditerAction">
+			<result name="success">/teacher/descriptionEditer.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="layDescription" class="org.jevy.action.LayDescriptionAction">
+			<result name="success">/teacher/layDescription.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="layExname_layTeam" class="org.jevy.action.LayExname">
+			<result name="success">/teacher/layExname_layTeam.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="dateTeam2" class="org.jevy.action.DateTeamAction">
+			<result name="success">/teacher/dateTeam2.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="dateTeam" class="org.jevy.action.DateTeamAction">
+			<result name="success">/teacher/dateTeam.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="layTeam" class="org.jevy.action.LayTeamAction">
+			<result name="success">/teacher/layTeam.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="editTeam" class="org.jevy.action.EditTeamAction">
+			<result name="success">/teacher/editTeam.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="updateTeam" class="org.jevy.action.UpdateTeamAction">
+			<result name="success">/teacher/layTeam.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="layExname_layData" class="org.jevy.action.LayExname">
+			<result name="success">/teacher/layExname_layData.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="dateData2" class="org.jevy.action.DateTeamAction">
+			<result name="success">/teacher/dateData2.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="dateData" class="org.jevy.action.DateDataAction">
+			<result name="success">/teacher/dateData.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="layTeam_layData" class="org.jevy.action.LayTeamAction">
+			<result name="success">/teacher/layTeam_layData.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="excellentCom" class="org.jevy.action.ExcellentComAction">
+			<result name="success">/teacher/excellentCom.jsp</result>
+			<result name="input">/teacher/excellentCom.jsp</result>
+		</action>
+		<action name="excellent" class="org.jevy.action.FavoriteAction">
+			<result name="success" type="redirect">favorites.action?tid=${tid}</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="favorites" class="org.jevy.action.LayFavoritesAction">
+			<result name="success" >/teacher/favorites.jsp</result>
+			<result name="favoriteDetail" type="redirect">layDataDispacher.action?tid=${tid}</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="deleteFavorites" class="org.jevy.action.DeleteFavorites">
+			<result name="success" type="redirect">favorites.action</result>
+			<result name="favoriteDetail" type="redirect">layDataDispacher.action?tid=${tid}</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="teamHaveData" class="org.jevy.action.TeamHaveData">
+			<result name="success">/teacher/layTeam_layData.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="teamNoData" class="org.jevy.action.TeamNoData">
+			<result name="success">/teacher/layTeam_layData.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		
+		<action name="layDataDispacher" class="org.jevy.dispacher.LayDataDispacher">
+			<result name="co2" type="redirect">CO2DataT.action?tid=${tid}</result>
+			<result name="gas" type="redirect">gasDataT.action?tid=${tid}</result>
+			<result name="salt" type="redirect">saltResultT.action?tid=${tid}</result>
+			<result name="ben" type="redirect">benResultT.action?tid=${tid}</result>
+			<result name="styrene" type="redirect">styreneResultT.action?tid=${tid}</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="CO2DataT" class="org.jevy.action.CO2DataAction">
+			<result name="success">/teacher/CO2Result.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="gasDataT" class="org.jevy.action.GasDataAction">
+			<result name="success">/teacher/gasResult.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="saltResultT" class="org.jevy.action.SaltResultAction">
+			<result name="success">/teacher/saltResult.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="benResultT" class="org.jevy.action.BenResultTAction">
+			<result name="success">/teacher/benResultT.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="benTResult" class="org.jevy.action.BenTResultAction">
+			<result name="success">benTResult.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="benQResult" class="org.jevy.action.BenQResultAction">
+			<result name="success">benQResult.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="styreneResultT" class="org.jevy.action.StyreneResultAction">
+			<result name="success">/teacher/styreneResultT.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="database">
+			<result name="success">/teacher/database.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="databaseExe">
+			<result name="success">/teacher/databaseExe.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="databaseExe2">
+			<result name="success">/teacher/databaseExe2.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="uploadStudent">
+			<result name="success">/teacher/uploadStudent.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="setStuLoginTime">
+			<result>setStuLoginTime.jsp</result>
+		</action>
+		<action name="setStuLoginTime2" class="org.jevy.action.SetStuLoginTime2Action">
+			<result  type="redirect">descriptionExname.action</result>
+		</action>
+		<action name="grantPower" class="org.jevy.action.GrantPowerAction">
+			<result name = "success">/teacher/grantPower.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="deletePower" class="org.jevy.action.DeletePowerAction">
+			<result name = "success">/teacher/grantPower.jsp</result>
+			<result name="input">/teacher/errors.jsp</result>
+		</action>
+		<action name="aboutUs">
+			<result>aboutUs.jsp</result>
+		</action>
+		<action name="showStudents">
+			<result>showStudents.jsp</result>
+		</action>
+	</package>
+
+
+	<package name="chem" extends="struts-default">
+		
+		<interceptors>
+			<interceptor name="stuLogin" class="org.jevy.action.LoginIntercepceptor"></interceptor>
+			
+			<interceptor-stack name="loginInterceptor">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="stuLogin"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="loginInterceptor"></default-interceptor-ref>
+		<global-results>
+			<result name="login">/login.jsp</result>
+			<result name="Exception">/errors.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+            <exception-mapping exception="java.sql.SQLException" result="SQLException"/>
+            <exception-mapping exception="java.lang.Exception" result="Exception"/>
+        </global-exception-mappings>
+		
+		<action name="layDescription" class="org.jevy.action.DescriptionEditerAction">
+			<result name="success">/layDescription.jsp</result>
+			<result name="input">/errors.jsp</result>
+		</action>
+		
+		<action name="layExnameDescription" class="org.jevy.action.LayExNameAction">
+			<result name="success">layExnameDescription.jsp</result>
+			<result name="input">/errors.jsp</result>
+		</action>
+		
+		<action name="layExnameDataInput" class="org.jevy.action.LayExNameAction">
+			<result name="success">/layExnameDataInput.jsp</result>
+			<result name="input">/errors.jsp</result>
+		</action>
+		
+		<action name="layData" class="org.jevy.action.LayExNameAction">
+			<result name="success">/myData.jsp</result>
+			<result name="input">/errors.jsp</result>
+		</action>
+		<action name="favorites" class="org.jevy.action.LayFavoritesAction">
+			<result name="success" >favorites.jsp</result>
+			<result name="favoriteDetail" type="redirect">layDataDispacher.action?tid=${tid}</result>
+			<result name="input">/errors.jsp</result>
+		</action>
+		<action name="layDataDispacher" class="org.jevy.dispacher.LayDataDispacher">
+			<result name="co2" type="redirect">CO2Data.action?tid=${tid}</result>
+			<result name="gas" type="redirect">gasData.action?tid=${tid}</result>
+			<result name="salt" type="redirect">saltResult.action?tid=${tid}</result>
+			<result name="ben" type="redirect">benResult.action?tid=${tid}</result>
+			<result name="styrene" type="redirect">styreneResult.action?tid=${tid}</result>
+			<result name="input">/errors.jsp</result>
+		</action>
+		<action name="dispacherDataInput" class="org.jevy.dispacher.DispacherDataInput">
+			<result name="gase" type="redirect">gasInput.action</result>
+			<result name="salt">/salt.jsp</result>
+			<result name="co2">/CO2.jsp</result>
+			<result name="ben">/Ben.jsp</result>
+			<result name="styrene">/styrene.jsp</result>
+			<result name="input">/errors.jsp</result>
+			<!--  
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
+			-->
+		</action>
+		
+		<action name="dispacherURLData" class="org.jevy.dispacher.DispacherURLData">
+			<result name="co2" type="redirect">CO2Data.action?enid=${enid}</result>
+			<result name="gas" type="redirect">gasData.action?enid=${enid}</result>
+			<result name="salt" type="redirect">saltResult.action?enid=${enid}</result>
+			<result name="ben" type="redirect">benResult.action?enid=${enid}</result>
+			<result name="styrene" type="redirect">styreneResult.action</result>
+			<result name="input">/errors.jsp</result>
+		</action>
+		
+		
+		<action name="CO2" class="org.jevy.action.CO2Action">
+			<result name="success"  type="redirect">CO2Data.action</result>
+			<result name="input">CO2.jsp</result>
+		</action>
+		
+		<action name="CO2Data" class="org.jevy.action.CO2DataAction">
+			<result name="success">CO2Result.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		
+		<action name="gas" class="org.jevy.action.GasAction">
+			<result name="success" type="redirect">gasData.action?enid=${enid}</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="gasData" class="org.jevy.action.GasDataAction">
+			<result name="success">gasResult.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="benT" class="org.jevy.action.BenTemperAction">
+			<result name="success">benResult.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="benQ" class="org.jevy.action.BenQualityAction">
+			<result name="success">benResult.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="benResult" class="org.jevy.action.BenResultTAction">
+			<result name="success">benResult.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="benTResult" class="org.jevy.action.BenTResultAction">
+			<result name="success">benTResult.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="benQResult" class="org.jevy.action.BenQResultAction">
+			<result name="success">benQResult.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="salt" class="org.jevy.action.SaltAction">
+			<result name="success" type="redirect">saltResult.action</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="saltResult" class="org.jevy.action.SaltResultAction">
+			<result name="success">saltResult.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="styrene" class="org.jevy.action.StyreneAction">
+			<result name="success" type="redirect">styreneResult.action</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="styreneResult" class="org.jevy.action.StyreneResultAction">
+			<result name="success">styreneResult.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="Com" class="org.jevy.action.CommentAction">
+			<result name="success">com.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="index">
+			<result name="success">index.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="co2Input">
+			<result name="success">CO2.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="gasInput">
+			<result name="success">gas.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="benInput">
+			<result name="success">Ben.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="saltInput">
+			<result name="success">salt.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+		<action name="styreneInput">
+			<result name="success">styrene.jsp</result>
+			<result name="input">errors.jsp</result>
+		</action>
+	</package>
+	
+	<package name="draw" extends="jfreechart-default" namespace="">
+	
+		<action name="co2Chart" class="org.jevy.action.CO2DrawAction">
+			<result type="chart">
+				<param name="width">800</param>
+				<param name="height">1000</param>
+			</result>
+		</action>
+		<action name="gasChart" class="org.jevy.action.GasDrawAction">
+			<result type="chart">
+				<param name="width">800</param>
+				<param name="height">600</param>
+			</result>
+		</action>
+		<action name="gasChart2" class="org.jevy.action.GasDraw2Action">
+			<result type="chart">
+				<param name="width">800</param>
+				<param name="height">600</param>
+			</result>
+		</action>
+		<action name="saltChart" class="org.jevy.action.SaltDrawAction">
+			<result type="chart">
+				<param name="width">800</param>
+				<param name="height">600</param>
+			</result>
+		</action>
+		<action name="benTChart" class="org.jevy.action.BenTDrawAction">
+			<result type="chart">
+				<param name="width">800</param>
+				<param name="height">600</param>
+			</result>
+		</action>
+		<action name="benQChart" class="org.jevy.action.BenQDrawAction">
+			<result type="chart">
+				<param name="width">800</param>
+				<param name="height">600</param>
+			</result>
+		</action>
+		<action name="styreneChart" class="org.jevy.action.StyreneDrawAction">
+			<result type="chart">
+				<param name="width">800</param>
+				<param name="height">600</param>
+			</result>
+		</action>
+		<action name="login" class="org.jevy.action.LoginAction">
+			<result name="success">/index.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		<action name="exit" class="org.jevy.action.ExitAction">
+			<result name="success">/login.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		<action name="aboutUs" >
+			<result name="success">/aboutUs.jsp</result>
+		</action>
+		<action name="teacher" class="org.jevy.action.TeacherLogin">
+			<result name="success" type="redirectAction">
+				<param name="actionName">descriptionExname</param>
+				<param name="namespace">/teacher</param>
+			</result>
+			<result name="input">/teacher/login.jsp</result>
+		</action>
+		<action name="imageUpload" class="org.jevy.action.KindEditorImageUploadAction">  
+             <result name="success">/teacher/imageUploadSuccess.jsp</result>  
+             <result name="error">/errors.jsp</result>  
+		</action>
+	</package>
+	
+	
+</struts>
