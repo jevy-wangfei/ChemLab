@@ -1,0 +1,25 @@
+1.加入的Struts2.0的包有：
+
+编码：
+1.在网页文件上，都指明了网页文件编码为UTF-8.
+2.Struts2默认的编码为UTF-8，所以对Struts2未作任何字符编码配置
+3.在MySQL数据库方面，设置数据库默认编码为UTF-8,建立数据表时，指定编码为UTF-8.
+4.在Tomcat服务器上， 修改${CATALINA_HOME}/conf/server.xml，添加URIEncoding，如下：
+    <Connector URIEncoding="UTF-8" port="8080" protocol="HTTP/1.1" 
+               connectionTimeout="20000" 
+               redirectPort="8443" />
+  使服务器对程序的处理按UTF-8编码进行。
+  通过以上步骤，实现项目的统一编码。
+5.页面DIV结构：
+<div id="all">
+	<div id="login"></div>----|
+	<div id="photo"></div>----|head.jsp model
+	
+	<div id="contener">
+    	<div id="word"></div>------|
+   		<div id="labels"></div>----|control labels and the word on it
+    	<div id="content">sfd</div>
+	</div>
+	
+	<div id="bottom"></div>
+</div>

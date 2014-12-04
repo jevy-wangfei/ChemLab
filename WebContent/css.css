@@ -1,0 +1,171 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	font-family: Arial, Helvetica, Verdana, Sans-serif;
+	font-size: 14px;
+	color:#FFF;
+	background-color:#FFF;
+	margin-top:10px;
+	margin-bottom:10px;
+	text-align:center;
+}
+h2{
+	align:"center"
+}
+#all{
+	margin: 0 auto;
+	overflow:auto;
+	margin-top:0px;
+	line-height:18px;
+	width:1000px;
+}
+
+#login{
+	background-color:#5b0800;
+	overflow:left;
+	height:20px;
+	padding:5px 0px 0px 10px;
+	font-size:12px;
+	text-align:left;
+}
+
+#photo{
+	background-color:#5b0805;
+	margin: 0 auto;
+	padding:0;
+	height:160px;
+	background-image: url("logo/hfutphoto2.jpg");
+	background-repeat:no-repeat;
+	background-position:center;
+	
+}
+
+#photo a{
+	text-decoration:none;
+	style="border:0;
+}
+
+#contener{
+	overflow:auto;
+	background-color:#002147;
+	margin: 0 auto;
+	overflow:auto;
+}
+#contener table{
+	overflow:left;
+	margin-left:0px;
+	text-align:left;
+}
+
+
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+a{
+	color:#FFF;
+}
+
+
+
+#word1{
+	width:720px;
+	height:30px;
+	background-image:url(logo/label1.png);
+	margin-top:10px;
+	margin-left:100px;
+}
+#word2{
+	width:720px;
+	height:30px;
+	background-image:url(logo/label2.png);
+	margin-top:10px;
+	margin-left:100px;
+}
+#word3{
+	width:720px;
+	height:30px;
+	background-image:url(logo/label3.png);
+	margin-top:10px;
+	margin-left:100px;
+}
+#word4{
+	width:720px;
+	height:30px;
+	background-image:url(logo/label4.png);
+	margin-top:10px;
+	margin-left:100px;
+}
+#word a:hover{
+	text-decoration:underline;
+	
+}
+
+#label1{
+	background-image:url(logo/label1.jpg);
+	margin-top:0px;
+	margin-left:100px;
+	margin-bottom:0px;
+	padding-bottom:0px;
+	
+}
+
+#content{
+	margin-left:100px;
+	width:800px;
+	height:auto;
+	background-color:#1b395f;
+	padding:10px;
+	text-align:center;
+	margin-bottom:5px;
+		
+}
+#center{
+	margin-right:auto;
+	margin-left:auto;
+}
+
+#content table{
+    border:1px solid #CCC;
+    border-width:1px 0 0 1px;
+    margin:2px 0 2px 0;
+    text-align:center;
+    border-collapse:collapse;
+    margin:auto;
+	overflow:auto;
+}
+#content td,th{
+    border:1px solid #CCC;
+    border-width:0 1px 1px 0;
+    margin:1px0 1px 0 ;
+    text-align:left;
+}
+#content th{
+    text-align:center;
+    font-weight:600;
+    font-size:12px;
+    background-color:#CCC;
+} 
+#content input{
+	background-color:#369;
+}
+#content p{
+	padding:5px;
+	line-height: 150%;
+	text-align:left;
+	}
+#bottom{
+	background-color:#5b0805;
+	margin: 0 auto;
+	overflow:auto;
+	padding:5px;
+}
+ 
